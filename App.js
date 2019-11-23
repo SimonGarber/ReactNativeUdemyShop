@@ -5,8 +5,11 @@ import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
 import productsReducer from "./store/reducers/products";
 import ShopNavigator from "./navigation/ShopNavigator";
+import cartReducer from "./store/reducers/cart";
+// import { composeWithDevTools } from "redux-devtools-extension";
 const rootReducer = combineReducers({
-  products: productsReducer
+  products: productsReducer,
+  cart: cartReducer
 });
 const store = createStore(rootReducer);
 const fetchFonts = () => {
