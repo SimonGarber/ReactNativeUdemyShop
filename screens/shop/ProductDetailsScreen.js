@@ -11,19 +11,18 @@ import { useSelector, useDispatch } from "react-redux";
 import colors from "../../constants/colors";
 import * as cartActions from "../../store/actions/cart";
 const ProductDetailsScreen = props => {
-  const dispatch = useDispatch();
   const productId = props.navigation.getParam("productId");
   const selectedProduct = useSelector(state =>
     state.products.availableProducts.find(prod => prod.id === productId)
   );
-
+  const dispatch = useDispatch();
   return (
     <ScrollView>
       <Image style={styles.image} source={{ uri: selectedProduct.imageUrl }} />
       <View style={styles.actions}>
         <Button
           color={colors.primary}
-          title="Add to Card"
+          title="Add to Cart"
           onPress={() => {
             dispatch(cartActions.addToCart(selectedProduct));
           }}
