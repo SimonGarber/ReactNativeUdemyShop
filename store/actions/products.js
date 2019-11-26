@@ -30,7 +30,7 @@ export const fetchProducts = () => {
           )
         );
       }
-
+      console.log(loadedProducts);
       dispatch({ type: SET_PRODUCTS, products: loadedProducts });
     } catch (err) {
       throw err;
@@ -69,7 +69,6 @@ export const createProduct = (title, description, imageUrl, price) => {
     );
     const resData = await response.json();
 
-    console.log(resData);
     dispatch({
       type: CREATE_PRODUCT,
       productData: {

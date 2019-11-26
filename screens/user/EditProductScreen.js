@@ -61,7 +61,11 @@ const EditProductScreen = props => {
     },
     formIsValid: editedProduct ? true : false
   });
-
+  useEffect(() => {
+    if (error) {
+      Alert.alert("An error occured", error, [{ text: "Okay" }]);
+    }
+  }, [error]);
   const submitHandler = useCallback(async () => {
     if (!formState.formIsValid) {
       Alert.alert("Invalid input!", "Please check the form", [
@@ -91,12 +95,12 @@ const EditProductScreen = props => {
           )
         );
       }
+      props.navigation.goBack();
     } catch (err) {
       setError(err.message);
     }
 
     setIsLoading(false);
-    props.navigation.goBack();
   }, [dispatch, prodId, formState]);
 
   useEffect(() => {
